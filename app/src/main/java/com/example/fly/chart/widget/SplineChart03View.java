@@ -395,6 +395,7 @@ public class SplineChart03View extends BaseChartView {
 //        }
 //        Log.e("month = ",month + "");
         labels.add("");
+
 //        labels.add(month + "");
         months.clear();
 //        months.add(month);
