@@ -1,23 +1,16 @@
 package com.example.fly.chart.widget;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.animation.LinearInterpolator;
-
 
 import com.example.fly.chart.R;
-import com.example.fly.chart.util.UtilPhoneParam;
 import com.example.fly.chart.util.UtilUnitConversion;
 
 import org.xclcharts.chart.BarChart;
@@ -38,7 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class SplineChart03View extends BaseChartView {
+public class SplineChart03ViewCopy extends BaseChartView {
 
     private String TAG = "SplineChart03View";
 
@@ -57,6 +50,7 @@ public class SplineChart03View extends BaseChartView {
     // splinechart支持横向和竖向定制线
     private List<CustomLineData> mXCustomLineDataset = new ArrayList<CustomLineData>();
     private List<CustomLineData> mYCustomLineDataset = new ArrayList<CustomLineData>();
+//    private CustomLineData cdy1;
 
     // 曲线图数据集合
     private List<PointD> linePoint1;
@@ -79,17 +73,17 @@ public class SplineChart03View extends BaseChartView {
     // 是否第一次进入
     private boolean isFirst = true;
 
-    public SplineChart03View(Context context) {
+    public SplineChart03ViewCopy(Context context) {
         super(context);
         initView();
     }
 
-    public SplineChart03View(Context context, AttributeSet attrs) {
+    public SplineChart03ViewCopy(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public SplineChart03View(Context context, AttributeSet attrs, int defStyle) {
+    public SplineChart03ViewCopy(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initView();
     }
@@ -157,6 +151,7 @@ public class SplineChart03View extends BaseChartView {
         // 隐藏柱形图的横坐标
         barChart.getDataAxis().hide();
         barChart.getCategoryAxis().hide();
+
 
         barChart.getBar().setBarTickSpacePercent(1);
         barChart.getBar().setBarInnerMargin(0);
@@ -236,7 +231,7 @@ public class SplineChart03View extends BaseChartView {
             splineChart.getPlotGrid().getHorizontalLinePaint()
                     .setStrokeWidth(0.00001f);
             splineChart.getPlotGrid().getHorizontalLinePaint()
-                    .setColor(Color.rgb(255, 255, 255));
+                    .setColor(Color.rgb(233, 233, 233));
 
             // 轴线
 //            splineChart
@@ -277,6 +272,11 @@ public class SplineChart03View extends BaseChartView {
                 }
             });
 
+            // 标题
+            // chart.setTitle("登录号码历史话费");
+            // 副标题
+            // chart.addSubtitle("(XCL-Charts Demo)");
+
             // 扩展绘图区左右边分割的范围，让定制线的说明文字能显示出来
             splineChart.getClipExt().setExtLeft(250.f);
             splineChart.getClipExt().setExtRight(250.f);
@@ -308,6 +308,7 @@ public class SplineChart03View extends BaseChartView {
      */
     private void barChartDataSet() {
         dataSeries2.add(100d);
+//        BarData barDataA = new BarData("Virtual OPM", dataSeries2, Color.rgb(255, 255, 255));
         BarData barDataA = new BarData("Virtual OPM", dataSeries2, Color.parseColor("#00A8FF"));
         barChartDataset.add(barDataA);
     }
@@ -330,12 +331,12 @@ public class SplineChart03View extends BaseChartView {
 //        splineChart.getDataAxis().setAxisSteps(newMaxNum / 11);
 
         // 设置按下效果和步进
-//        barChart.getDataAxis().setAxisMax(newMaxNum);
-//        barChart.getDataAxis().setAxisSteps(newMaxNum / 7);
+        barChart.getDataAxis().setAxisMax(newMaxNum);
+        barChart.getDataAxis().setAxisSteps(newMaxNum / 6);
 
         // 柱形图数据
         dataSeries2.clear();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             dataSeries2.add(newMaxNum);
         }
 //        BarData barDataA = new BarData("Virtual OPM", dataSeries2, Color.rgb(255, 255, 255));
@@ -389,22 +390,19 @@ public class SplineChart03View extends BaseChartView {
      * 曲线图横坐标
      */
     private void chartLabels() {
-//        int month = getMonthNow() - 5;
-//        if (month <= 0) {
-//            month = month + 12;
-//        }
-//        Log.e("month = ",month + "");
-        labels.add("");
-//        labels.add(month + "");
-        months.clear();
-//        months.add(month);
-        for (int i = 0; i < 7; i++) {
-//            month = getMonthNext(month);
-            labels.add(i + "");
-            months.add(i);
+        int month = getMonthNow() - 5;
+        if (month <= 0) {
+            month = month + 12;
         }
-        Log.e("labels = ",labels.toString());
-        Log.e("months = ",months.toString());
+        labels.add("");
+        labels.add(month + "");
+        months.clear();
+        months.add(month);
+        for (int i = 0; i < 4; i++) {
+            month = getMonthNext(month);
+            labels.add(month + "");
+            months.add(month);
+        }
     }
 
     // 柱状图横坐标（必须保留，否则监听事件不起作用）
@@ -414,7 +412,7 @@ public class SplineChart03View extends BaseChartView {
             month = month + 12;
         }
         barLabels.add(month + "天");
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 4; i++) {
             month = getMonthNext(month);
             barLabels.add(month + "天");
         }
@@ -433,6 +431,23 @@ public class SplineChart03View extends BaseChartView {
         }
     }
 
+    /**
+     * 均值线
+     */
+    private void chartCustomeLines() {
+//        Bitmap bmp = BitmapFactory.decodeResource(getResources(),
+//                R.drawable.line_chart);
+//        // 适配表格
+//        Matrix matrix = new Matrix();
+//        // 高度不变，缩放宽度
+//        matrix.postScale(((float)(UtilPhoneParam.screenWidth - UtilUnitConversion.dip2px(getContext(),30))) / bmp.getWidth(), 1);
+//        // 得到新的图片
+//        Bitmap newbm = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+//        cdy1 = new CustomLineData(0.0, newbm);
+//        cdy1.setLineStyle(XEnum.LineStyle.BITMAP);
+//        mYCustomLineDataset.add(cdy1);
+    }
+
     @Override
     public void render(Canvas canvas) {
         try {
@@ -443,10 +458,32 @@ public class SplineChart03View extends BaseChartView {
             paintLable.setAntiAlias(true);
             paintLable.setColor(Color.WHITE);
             paintLable.setTextSize(UtilUnitConversion.dip2px(getContext(), 12));
+            // 获取标签背景
+//            Bitmap bmp = BitmapFactory.decodeResource(getResources(),
+//                    R.drawable.ic_sp_lable);
 
             // 平均值字体缩放
             float textWidth = paintLable.measureText(UtilUnitConversion.keepTwoDecimalPlaces(average)) + UtilUnitConversion.dip2px(getContext(), 10);
             Matrix matrix = new Matrix();
+//            matrix.postScale(textWidth / bmp.getWidth(), 1);
+//            // 得到新的图片
+//            Bitmap newbm = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+//            // 平均值线标签背景 top 高度为(1-平均值/100)
+//            canvas.drawBitmap(
+//                    newbm,
+//                    splineChart.getPlotArea().getLeft(),
+//                    (splineChart.getPlotArea().getBottom() - splineChart.getPlotArea().getTop())
+//                            * (Float.parseFloat(newMaxNum + "") - Float.parseFloat(average + ""))
+//                            / Float.parseFloat(newMaxNum + "") + splineChart.getPlotArea().getTop()
+//                            - newbm.getHeight() - UtilUnitConversion.dip2px(getContext(), 6), null);
+            // 设置平均值
+//            canvas.drawText(
+//                    UtilUnitConversion.keepTwoDecimalPlaces(average),
+//                    splineChart.getPlotArea().getLeft() + UtilUnitConversion.dip2px(getContext(), 5),
+//                    (splineChart.getPlotArea().getBottom() - splineChart.getPlotArea().getTop())
+//                            * (Float.parseFloat(newMaxNum + "") - Float.parseFloat(average + ""))
+//                            / Float.parseFloat(newMaxNum + "") + splineChart.getPlotArea().getTop()
+//                            - bmp.getHeight() * 10 / 16, paintLable);
 
             // 设置曲线上的文字
             paintText.setAntiAlias(true);
@@ -549,7 +586,6 @@ public class SplineChart03View extends BaseChartView {
 
         barChart.showFocusRectF(record.getRectF());
         barChart.getFocusPaint().setStyle(Style.FILL);
-//        this.average = 10D;
         barChart.getFocusPaint().setStrokeWidth(3);
         barChart.getFocusPaint().setColor(Color.rgb(250, 250, 250));
         this.invalidate();

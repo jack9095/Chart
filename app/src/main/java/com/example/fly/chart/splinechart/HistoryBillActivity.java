@@ -67,11 +67,13 @@ public class HistoryBillActivity extends MyActivity {
     private void initViews(double arrBill[]) {
         // 瞄点值 BillAmount1代表最近的月份，应显示在曲线的最右边，BillAmount5代表最远的月份，应显示在曲线的最左边
         List<PointD> linePoint1 = new ArrayList<PointD>();
-        linePoint1.add(new PointD(10d, arrBill[4]));
-        linePoint1.add(new PointD(30d, arrBill[3]));
-        linePoint1.add(new PointD(50d, arrBill[2]));
-        linePoint1.add(new PointD(70d, arrBill[1]));
-        linePoint1.add(new PointD(90d, arrBill[0]));
+        linePoint1.add(new PointD(10d, arrBill[6]));
+        linePoint1.add(new PointD(30d, arrBill[5]));
+        linePoint1.add(new PointD(50d, arrBill[4]));
+        linePoint1.add(new PointD(70d, arrBill[3]));
+        linePoint1.add(new PointD(90d, arrBill[2]));
+        linePoint1.add(new PointD(110d, arrBill[1]));
+        linePoint1.add(new PointD(130d, arrBill[0]));
 
         Double sum = 0.00;
         minNum = arrBill[0];
@@ -99,6 +101,8 @@ public class HistoryBillActivity extends MyActivity {
                 70.0,
                 50.0,
                 90.0,
+                30.0,
+                10.0,
         };
         initViews(arrBill);
     }
