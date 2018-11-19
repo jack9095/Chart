@@ -1,1 +1,1 @@
-include ':app', ':XCLCharts'
+include ':app', ':XCLCharts', ':mpchartdemo', ':MPChartLib', ':MPChartExample'
