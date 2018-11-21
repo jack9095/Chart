@@ -27,10 +27,12 @@ import com.xxmassdeveloper.mpchartexample.FilledLineActivity;
 import com.xxmassdeveloper.mpchartexample.HalfPieChartActivity;
 import com.xxmassdeveloper.mpchartexample.HorizontalBarChartActivity;
 import com.xxmassdeveloper.mpchartexample.InvertedLineChartActivity;
+import com.xxmassdeveloper.mpchartexample.InvertedLineChartActivityDemo;
 import com.xxmassdeveloper.mpchartexample.LineChartActivity1;
 import com.xxmassdeveloper.mpchartexample.LineChartActivity2;
 import com.xxmassdeveloper.mpchartexample.LineChartActivityColored;
 import com.xxmassdeveloper.mpchartexample.LineChartTime;
+import com.xxmassdeveloper.mpchartexample.LineDemoChartActivity;
 import com.xxmassdeveloper.mpchartexample.ListViewBarChartActivity;
 import com.xxmassdeveloper.mpchartexample.ListViewMultiChartActivity;
 import com.xxmassdeveloper.mpchartexample.MultiLineChartActivity;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        setTitle("MPAndroidChart Example");
+        setTitle("demo");
 
         // initialize the utilities
         Utils.init(this);
@@ -146,13 +148,15 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 i = new Intent(this, LineChartActivity2.class);
                 break;
             case 4:
-                i = new Intent(this, InvertedLineChartActivity.class);
+//                i = new Intent(this, InvertedLineChartActivity.class);
+                i = new Intent(this, InvertedLineChartActivityDemo.class);
                 break;
             case 5:
                 i = new Intent(this, CubicLineChartActivity.class);
                 break;
             case 6:
                 i = new Intent(this, LineChartActivityColored.class);
+                i = new Intent(this, LineDemoChartActivity.class);
                 break;
             case 7:
                 i = new Intent(this, PerformanceLineChart.class);

@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Chart.iml" filepath="$PROJECT_DIR$/Chart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MPChartExample/MPChartExample.iml" filepath="$PROJECT_DIR$/MPChartExample/MPChartExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/XCLCharts/XCLCharts.iml" filepath="$PROJECT_DIR$/XCLCharts/XCLCharts.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mpchartdemo/mpchartdemo.iml" filepath="$PROJECT_DIR$/mpchartdemo/mpchartdemo.iml" />
     </modules>
   </component>
 </project>

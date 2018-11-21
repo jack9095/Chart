@@ -7,7 +7,7 @@
     <application
         android:allowBackup="false"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/star"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
@@ -37,10 +37,12 @@
         <activity android:name="StackedBarActivity" />
         <activity android:name="AnotherBarActivity" />
         <activity android:name="InvertedLineChartActivity" />
+        <activity android:name="InvertedLineChartActivityDemo" />
         <activity android:name="CandleStickChartActivity" />
         <activity android:name="CubicLineChartActivity" />
         <activity android:name="RadarChartActivity" />
         <activity android:name="LineChartActivityColored" />
+        <activity android:name="LineDemoChartActivity" />
         <activity android:name="DynamicalAddingActivity" />
         <activity android:name="RealtimeLineChartActivity" />
         <activity android:name="CombinedChartActivity" />
